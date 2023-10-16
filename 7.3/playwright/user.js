@@ -1,4 +1,4 @@
 module.exports = {
 email: "dnatali2211@gmail.com",
-password: "xoznux-tanzuf-tidsu6",
+password: "xoznuX-tanzuf-tidsu6",
 }

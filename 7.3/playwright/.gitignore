@@ -21,3 +21,8 @@
 *.sln.docstates
 
 .user.js
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/e2e/
+/tests-examples/

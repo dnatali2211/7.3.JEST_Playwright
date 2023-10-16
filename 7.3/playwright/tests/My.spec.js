@@ -1,7 +1,9 @@
+const { describe } = require("node:test");
 const user = require("../user");
 const { test, expect } = require("@playwright/test");
 
-  test("Успешная авторизация", async ({page}) => {
+describe("Авторизация", async ({page}) => {
+test("Успешная авторизация", async ({page}) => {
     
   await page.goto("https://netology.ru/?modal=sign_in");
   await page.fill('input[name="email"]', user.email);
@@ -9,7 +11,8 @@ const { test, expect } = require("@playwright/test");
   await page.click('[data-testid="login-submit-btn"]');
   await page.waitForSelector("text=Моё обучение");
 
-  expect(page).toHaveURL("https://netology.ru/profile/7811166");
+  await page.waitForURL("https://netology.ru/profile", { timeout: 5000 });
+  expect(page).toHaveURL("https://netology.ru/profile");
   });
   
   test("Неуспешная авторизация", async ({page}) => {
@@ -29,3 +32,4 @@ const { test, expect } = require("@playwright/test");
       await browser.close();
     }
   });
+});
