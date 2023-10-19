@@ -1,16 +1,19 @@
 let page;
 
+beforeEach(async () => {
+  page = await browser.newPage();
+});
+
+afterEach(() => {
+  page.close();
+});
+
 describe("Github page tests", () => {
 
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("https://github.com/team");
   });
   
-  afterEach(() => {
-    page.close();
-  });
-
   test("The h1 header content'", async () => {
     const firstLink = await page.$("header div div a");
     await firstLink.click();
@@ -36,12 +39,7 @@ describe("Github page tests", () => {
 
 describe("Github page title tests", () => {
 
-  afterEach(() => {
-    page.close();
-  });
-
   test("The h1 title content'", async () => {
-    page = await browser.newPage();
     await page.goto("https://github.com/features/actions");
 
     const link = await page.$("main div div a");
@@ -54,7 +52,6 @@ describe("Github page title tests", () => {
   }, 10000);
 
   test("The second link attribute", async () => {
-    page = await browser.newPage();
     await page.goto("https://github.com/solutions/ci-cd/");
 
     const links = await page.$$("a");
@@ -65,8 +62,7 @@ describe("Github page title tests", () => {
         expect(actual).toEqual("https://github.com/");
       });
 
-      test("The h1 title content at the sponsor's page", async () => {
-    page = await browser.newPage();
+  test("The h1 title content at the sponsor's page", async () => {
     await page.goto("https://github.com/sponsors");
 
     const link = await page.$("main div div a");
