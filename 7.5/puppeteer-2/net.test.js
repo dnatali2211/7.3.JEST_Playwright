@@ -6,6 +6,7 @@ let page;
 beforeEach(async () => {
   page = await browser.newPage();
   await page.setDefaultNavigationTimeout(0);
+  await page.goto("http://qamid.tmweb.ru/client/index.php");
 });
 
 afterEach(() => {
@@ -13,10 +14,7 @@ afterEach(() => {
 });
 
 describe("Booking movies tests", () => {
-  beforeEach(async () => {
-      await page.goto("http://qamid.tmweb.ru/client/index.php");
-  });
-
+ 
   test("Happy Path 1: Бронирование одного билета", async () => {
       await clickElement(page, 'body > nav > a:nth-child(2)');
       await clickElement(page, 'body > main > section:nth-child(3) > div:nth-child(2) > ul > li > a');

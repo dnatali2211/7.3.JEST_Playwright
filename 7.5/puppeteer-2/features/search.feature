@@ -1,5 +1,16 @@
-Feature: Search a course
-    Scenario: Should search by text
-        Given user is on "/navigation" page
-        When user search by "тестировщик"
-        Then user sees the course suggested "Тестировщик ПО"
+Feature: Booking tickets
+    Scenario: Booking one ticket
+        Given user is on the booking page
+        When user chooses a ticket
+        Then the booking button for single ticket should be enabled
+
+    Scenario: Booking a few tickets
+        Given user is on the booking page
+        When user chooses a few tickets
+        Then the booking button should be enabled
+
+
+    Scenario: Try to booking booked ticket
+        Given user is on the booking page
+        When user chooses a booked ticket
+        Then the booking button should be disabled
